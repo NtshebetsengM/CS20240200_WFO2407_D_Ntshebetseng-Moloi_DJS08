@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import "../server.js"
 import { Link } from "react-router-dom"
+import "../../server.js"
 
 export default function Vans() {
     const [vans, setVans] = useState([])
