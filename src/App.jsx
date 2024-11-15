@@ -9,8 +9,8 @@ import Dashboard from "../Pages/Host/Dashboard.jsx"
 import Income from "../Pages/Host/Income.jsx"
 import Reviews from "../Pages/Host/Reviews.jsx"
 import HostLayout from "../components/HostLayout.jsx"
-
-
+import HostVans from "../Pages/Host/HostVans.jsx"
+import HostVanDetail from "../Pages/Host/HostVanDetails.jsx"
 
 export default function App() {
   return (
@@ -26,6 +26,8 @@ export default function App() {
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income/>} />
               <Route path="reviews" element={<Reviews/>} />
+              <Route path="vans" element={<HostVans />} />
+              <Route path="vans/:id" element={<HostVanDetail />} />
             </Route>
           </Route>
         </Routes>
