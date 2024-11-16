@@ -12,7 +12,7 @@ import HostLayout from "../components/HostLayout.jsx"
 import HostVans from "../Pages/Host/HostVans.jsx"
 import HostVanDetail from "../Pages/Host/HostVanDetails.jsx"
 import HostVanInfo from "../Pages/Host/HostVanInfo.jsx"
-import HostVanPhoto from "../Pages/Host/HostVanPhoto.jsx"
+import HostVanPhoto from "../Pages/Host/HostVanPhotos.jsx"
 import HostVanPricing from "../Pages/Host/HostVanPricing.jsx"
 
 
@@ -35,7 +35,7 @@ export default function App() {
               <Route path="vans/:id" element={<HostVanDetail />}>
                 <Route index element={<HostVanInfo/>}/>
                 <Route path="pricing" element={<HostVanPricing/>}/>
-                <Route path="photo" element={<HostVanPhoto/>}/>
+                <Route path="photos" element={<HostVanPhoto/>}/>
               </Route>
             </Route>
           </Route>
