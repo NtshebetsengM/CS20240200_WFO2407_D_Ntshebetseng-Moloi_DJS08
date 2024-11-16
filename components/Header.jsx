@@ -2,8 +2,13 @@ import { Link, NavLink } from "react-router-dom"
 import imageUrl from "../assets/images/avatar-icon.png"
 
 export default function Header() {
-    return (
+   
+  function fakeLogOut() {
+    localStorage.removeItem("loggedin")
+}
 
+  
+  return (
         <header>
         <Link className="site-logo" to="/"> #VanLife</Link>
         <nav>
@@ -13,6 +18,7 @@ export default function Header() {
           <Link to="login" className="login-link">
               <img src={imageUrl} className="login-icon" />
           </Link>
+          <button onClick={fakeLogOut}>X</button>
         </nav>
       </header>
     )

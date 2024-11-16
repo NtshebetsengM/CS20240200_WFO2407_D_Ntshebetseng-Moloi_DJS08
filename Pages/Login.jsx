@@ -6,16 +6,23 @@ export default function Login() {
     const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
     const [status, setStatus] = useState("idle")
     const [error, setError] = useState(null)
-    const location = useLocation()
     
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from || "/host"
+
     function handleSubmit(event) {
         event.preventDefault()
         setStatus("submitting")
         loginUser(loginFormData)
         .then(data => {
-            console.log(data)
+            setError(null)
+            localStorage.setItem("loggedin", true)
+            navigate(from, { replace: true })
         })
-        .catch((err) => {setError(err)})
+        .catch((err) => {
+            setError(err)
+        })
         .finally(() => {setStatus("idle")})
         
     }
@@ -36,7 +43,7 @@ export default function Login() {
             }
 
             <h1>Sign in to your account</h1>
-            
+
             {error?.message &&
                 <h3 className="login-error">{error.message}</h3>
             }
