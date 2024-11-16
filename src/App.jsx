@@ -12,7 +12,7 @@ import HostLayout from "../components/HostLayout.jsx"
 import HostVans from "../Pages/Host/HostVans.jsx"
 import HostVanDetail from "../Pages/Host/HostVanDetails.jsx"
 import HostVanInfo from "../Pages/Host/HostVanInfo.jsx"
-import HostVanPhoto from "../Pages/Host/HostVanPhotos.jsx"
+import HostVanPhotos from "../Pages/Host/HostVanPhotos.jsx"
 import HostVanPricing from "../Pages/Host/HostVanPricing.jsx"
 import NotFound from "../Pages/NotFound.jsx"
 import "../server.js"
@@ -21,12 +21,13 @@ export default function App() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route element={<Layout/>}>
-              <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Layout/>}>
+              <Route index element={<Home/>}/>
               <Route path="about" element = {<About/>} />
               <Route path="vans" element = {<Vans/>} />
               <Route path="vans/:id" element={<VanDetail/>} />
-
+              {/* <Route path="login" element={<Login/>}/> */}
+            
             <Route path="host" element={<HostLayout/>} >
                 <Route index element={<Dashboard />} />
                 <Route path="income" element={<Income/>} />
@@ -36,7 +37,7 @@ export default function App() {
               <Route path="vans/:id" element={<HostVanDetail />}>
                   <Route index element={<HostVanInfo/>}/>
                   <Route path="pricing" element={<HostVanPricing/>}/>
-                  <Route path="photos" element={<HostVanPhoto/>}/>
+                  <Route path="photos" element={<HostVanPhotos />}/>
               </Route>
 
             </Route>

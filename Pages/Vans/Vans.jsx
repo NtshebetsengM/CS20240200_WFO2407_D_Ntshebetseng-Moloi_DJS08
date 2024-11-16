@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { Link ,useSearchParams} from "react-router-dom"
 import { getVans } from "../../api"
+import "../../server.js"
 
 export default function Vans() {
 
 const [searchParams, setSearchParams] = useSearchParams()
 const [vans, setVans] = useState([])
 const [loading, setLoading] = useState(false)
+const [error, setError] = useState(null)
 
 const typeFilter = searchParams.get("type")
 
@@ -14,9 +16,15 @@ const typeFilter = searchParams.get("type")
 useEffect(() => {
   async function loadVans() {
     setLoading(true)
+    try{
       const data = await getVans()
       setVans(data)
-      setLoading(false)
+    } catch(err){
+        setError(err)
+    }finally{
+      setLoading(false)}
+  
+      
   }
   
   loadVans()
@@ -41,9 +49,14 @@ const vanElements = displayedVans.map(van => (
         </Link>
     </div>
     ))
-if (loading){
-  <h1>Loading...</h1>
-}
+
+    if (loading){
+      return <h1 aria-live="polite">Loading...</h1>
+    }
+
+    if (error) {
+      return <h1 aria-live="assertive">There was an error: {error.message} </h1>
+    }
     return (
       <div className="van-list-container">
         <h1>Explore our van options</h1>
