@@ -6,14 +6,17 @@ export default function Vans() {
 
 const [searchParams, setSearchParams] = useSearchParams()
 const [vans, setVans] = useState([])
+const [loading, setLoading] = useState(false)
 
 const typeFilter = searchParams.get("type")
 
 
 useEffect(() => {
   async function loadVans() {
+    setLoading(true)
       const data = await getVans()
       setVans(data)
+      setLoading(false)
   }
   
   loadVans()
@@ -38,7 +41,9 @@ const vanElements = displayedVans.map(van => (
         </Link>
     </div>
     ))
-
+if (loading){
+  <h1>Loading...</h1>
+}
     return (
       <div className="van-list-container">
         <h1>Explore our van options</h1>

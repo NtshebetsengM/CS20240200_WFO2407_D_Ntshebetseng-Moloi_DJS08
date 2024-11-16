@@ -15,7 +15,7 @@ import HostVanInfo from "../Pages/Host/HostVanInfo.jsx"
 import HostVanPhoto from "../Pages/Host/HostVanPhotos.jsx"
 import HostVanPricing from "../Pages/Host/HostVanPricing.jsx"
 import NotFound from "../Pages/NotFound.jsx"
-
+import "../server.js"
 
 export default function App() {
   return (
