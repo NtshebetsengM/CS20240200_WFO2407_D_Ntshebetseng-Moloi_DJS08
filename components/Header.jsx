@@ -6,6 +6,7 @@ export default function Header() {
         <header>
         <Link className="site-logo" to="/"> #VanLife</Link>
         <nav>
+          <NavLink to="/login"className={({isActive}) => isActive ? "active-link" : null} >Login</NavLink>
           <NavLink to="/host" className={({isActive}) => isActive ? "active-link" : null}>Host</NavLink>
           <NavLink to="/about" className={({isActive}) => isActive ? "active-link" : null}>About</NavLink>
           <NavLink to="/Vans"className={({isActive}) => isActive ? "active-link" : null} >Vans</NavLink>
